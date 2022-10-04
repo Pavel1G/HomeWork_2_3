@@ -1,15 +1,23 @@
 package transport;
 
+import java.util.Arrays;
+
 public abstract class Transport {
     private String brand;
     private String model;
     private double engineVolume;
+
+    private Transport[] transports;
 
     public Transport(String brand, String model, double engineVolume) {
         setBrand(brand);
         setModel(model);
         setEngineVolume(engineVolume);
     }
+
+    abstract void beginMove();
+
+    abstract void endMove();
 
     public void setBrand(String brand) {
         if (brand == null || brand.isEmpty()) {
@@ -19,15 +27,11 @@ public abstract class Transport {
         }
     }
 
-    abstract void beginMove();
-
-    abstract void endMove();
-
     public void setModel(String model) {
         if (model == null || model.isEmpty()) {
             this.model = "default";
         } else {
-            this.model = brand;
+            this.model = model;
         }
     }
 

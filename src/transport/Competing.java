@@ -4,7 +4,7 @@ public interface Competing {
 
     void doPitStop();
 
-    String timeBestLap();
+    void timeBestLap();
 
-    int maxSpeed();
+    void maxSpeed();
 }
