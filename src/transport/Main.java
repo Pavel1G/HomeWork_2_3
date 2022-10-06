@@ -2,10 +2,10 @@ package transport;
 
 public class Main {
     public static void main(String[] args) {
-        Car audi = new Car("Audi", "TT", 2.0);
-        Car bmw = new Car("BMW", "Z4", 2.4);
-        Car renault = new Car("Renault", "Megane", 2.4);
-        Car ford = new Car("Ford", "Mustang", 3.0);
+        Car audi = new Car("Audi", "TT", 2.0, Car.TypeBody.SEDAN);
+        Car bmw = new Car("BMW", "Z4", 2.4, Car.TypeBody.HATCHBACK);
+        Car renault = new Car("Renault", "Megane", 2.4, Car.TypeBody.HATCHBACK);
+        Car ford = new Car("Ford", "Mustang", 3.0, Car.TypeBody.SEDAN);
 
         Driver<Car> mike = new Driver<>("Mike", "B", 10);
         mike.infoAboutDriver(audi);
@@ -21,10 +21,10 @@ public class Main {
         System.out.println();
 
 
-        Truck kamaz = new Truck("Kamaz", "65806", 12.0);
-        Truck maz = new Truck("MAZ", "6430", 11.1);
-        Truck renaultTruck = new Truck("Renault", "Magnum", 12.8);
-        Truck fordTruck = new Truck("Ford", "1286D", 6.8);
+        Truck kamaz = new Truck("Kamaz", "65806", 12.0, Truck.TypeLoad.N2);
+        Truck maz = new Truck("MAZ", "6430", 11.1, Truck.TypeLoad.N3);
+        Truck renaultTruck = new Truck("Renault", "Magnum", 12.8, Truck.TypeLoad.N2);
+        Truck fordTruck = new Truck("Ford", "1286D", 6.8, Truck.TypeLoad.N1);
 
         Driver<Truck> bob = new Driver<>("Bob", "C", 15);
         bob.infoAboutDriver(renaultTruck);
@@ -40,10 +40,10 @@ public class Main {
         System.out.println();
         System.out.println();
 
-        Bus mazBus = new Bus("MAZ", "303", 7.7);
-        Bus paz = new Bus("PAZ", "4234", 3.76);
-        Bus liaz = new Bus("LIAZ", "6213", 6.65);
-        Bus mercedes = new Bus("Mercedes", "Conecto", 10.7);
+        Bus mazBus = new Bus("MAZ", "303", 7.7, Bus.TypeCapacity.BIG);
+        Bus paz = new Bus("PAZ", "4234", 3.76, Bus.TypeCapacity.VERY_SMALL);
+        Bus liaz = new Bus("LIAZ", "6213", 6.65, Bus.TypeCapacity.MEDIUM);
+        Bus mercedes = new Bus("Mercedes", "Conecto", 10.7, Bus.TypeCapacity.VERY_SMALL);
 
         Driver<Bus> john = new Driver<>("John", "D", 30);
         john.infoAboutDriver(mercedes);
@@ -55,5 +55,12 @@ public class Main {
             bus.maxSpeed();
             System.out.println("---------------------------------------------");
         }
+        System.out.println();
+        printInfo(mike, renault);
+    }
+
+    private static void printInfo(Driver<?> driver, Transport transport) {
+        System.out.printf("Водитель %s управляет автомобилем %s %s. \n", driver.getName(), transport.getBrand(), transport.getModel());
+        transport.checkType();
     }
 }

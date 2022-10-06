@@ -19,6 +19,8 @@ public abstract class Transport {
 
     abstract void endMove();
 
+    abstract void checkType();
+
     public void setBrand(String brand) {
         if (brand == null || brand.isEmpty()) {
             this.brand = "default";
