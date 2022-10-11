@@ -57,10 +57,30 @@ public class Main {
         }
         System.out.println();
         printInfo(mike, renault);
+
+        service(audi, bmw, renault, ford,
+                kamaz, maz, renaultTruck, fordTruck,
+                mazBus, paz, liaz, mercedes);
     }
 
     private static void printInfo(Driver<?> driver, Transport transport) {
         System.out.printf("Водитель %s управляет автомобилем %s %s. \n", driver.getName(), transport.getBrand(), transport.getModel());
         transport.checkType();
+    }
+
+    private static void service(Transport... transports) {
+        for (Transport transport : transports) {
+            serviceTransport(transport);
+        }
+    }
+
+    private static void serviceTransport(Transport transport) {
+        try {
+            if (!transport.checkDiagnosed()) {
+                System.out.printf("Автомобиль %s %s не прошел диагностику! \n", transport.getBrand(), transport.getModel());
+            }
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

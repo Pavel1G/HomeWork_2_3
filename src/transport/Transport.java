@@ -21,6 +21,8 @@ public abstract class Transport {
 
     abstract void checkType();
 
+    abstract boolean checkDiagnosed();
+
     public void setBrand(String brand) {
         if (brand == null || brand.isEmpty()) {
             this.brand = "default";

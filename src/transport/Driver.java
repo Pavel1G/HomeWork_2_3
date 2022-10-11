@@ -7,7 +7,7 @@ public class Driver<T extends Transport & Competing> {
 
     public Driver(String name, String driverLicense, int experience) {
         this.name = name;
-        this.driverLicense = driverLicense;
+        setDriverLicense(driverLicense);
         this.experience = experience;
     }
 
@@ -30,6 +30,9 @@ public class Driver<T extends Transport & Competing> {
     }
 
     public void setDriverLicense(String driverLicense) {
+        if (driverLicense == null) {
+            throw new IllegalArgumentException("Необходимо указать категорию прав");
+        }
         this.driverLicense = driverLicense;
     }
 
