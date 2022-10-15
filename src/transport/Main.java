@@ -1,5 +1,8 @@
 package transport;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 public class Main {
     public static void main(String[] args) {
         Car audi = new Car("Audi", "TT", 2.0, Car.TypeBody.SEDAN);
@@ -26,6 +29,9 @@ public class Main {
         Truck renaultTruck = new Truck("Renault", "Magnum", 12.8, Truck.TypeLoad.N2);
         Truck fordTruck = new Truck("Ford", "1286D", 6.8, Truck.TypeLoad.N1);
 
+        //Если я не указываю в <> конкретный класс класса Transport, то получается что ron может управлять
+        // всеми классами-наследниками Transport?
+        Driver ron = new Driver("Ron", "B", 10);
         Driver<Truck> bob = new Driver<>("Bob", "C", 15);
         bob.infoAboutDriver(renaultTruck);
 //        bob.infoAboutDriver(renault);
@@ -56,31 +62,74 @@ public class Main {
             System.out.println("---------------------------------------------");
         }
         System.out.println();
-        printInfo(mike, renault);
+//        printInfo(mike, renault);
+//
+//        service(audi, bmw, renault, ford,
+//                kamaz, maz, renaultTruck, fordTruck,
+//                mazBus, paz, liaz, mercedes);
+//    }
+//
+//    private static void printInfo(Driver<?> driver, Transport transport) {
+//        System.out.printf("Водитель %s управляет автомобилем %s %s. \n", driver.getName(), transport.getBrand(), transport.getModel());
+//        transport.checkType();
+//    }
+//
+//    private static void service(Transport... transports) {
+//        for (Transport transport : transports) {
+//            serviceTransport(transport);
+//        }
+//    }
+//
+//    private static void serviceTransport(Transport transport) {
+//        try {
+//            if (!transport.checkDiagnosed()) {
+//                System.out.printf("Автомобиль %s %s не прошел диагностику! \n", transport.getBrand(), transport.getModel());
+//            }
+//        } catch (RuntimeException e) {
+//            System.out.println(e.getMessage());
+//        }
 
-        service(audi, bmw, renault, ford,
-                kamaz, maz, renaultTruck, fordTruck,
-                mazBus, paz, liaz, mercedes);
+        /**
+         * HomeWork_2_7
+         * Урок с коллекциями
+         */
+
+        ArrayList<Transport> transports = new ArrayList<>();
+        transports.add(audi);
+        transports.add(renaultTruck);
+        transports.add(mazBus);
+
+        LinkedList<Driver> drivers = new LinkedList<>();
+        drivers.add(mike);
+        drivers.add(bob);
+        drivers.add(john);
+
+        LinkedList<Sponsor> sponsors = new LinkedList<>();
+        Sponsor gazprom = new Sponsor("Газпром", 1000);
+        //А можно ли как-то указать, что спонсор lukoil может обслуживать и класс Car, и Truck?
+        Sponsor lukoil = new Sponsor("Лукойл", 50);
+        Sponsor lukoilTruck = new Sponsor("Лукойл-Трак", 100);
+        sponsors.add(gazprom);
+        sponsors.add(lukoil);
+        sponsors.add(lukoilTruck);
+
+        LinkedList<Mechanic> mechanics = new LinkedList<>();
+        Mechanic johnMechanic = new Mechanic("John", "Smith", "Aurora");
+        Mechanic robMechanic = new Mechanic("Rob", "Wesley", "Beta");
+        Mechanic alice = new Mechanic("Alice", "Shiny", "Beta");
+        mechanics.add(johnMechanic);
+        mechanics.add(robMechanic);
+        mechanics.add(alice);
+
+        Car audiTT = new Car("Audi", "TT", 2.5, mike, gazprom, alice, Car.TypeBody.HATCHBACK);
+        System.out.printf("У машины %s %s водитель - %s. Спонсор - %s. Механик - %s. \n",
+                audiTT.getBrand(), audiTT.getModel(), audiTT.getDriver().getName(), audiTT.getSponsor().getName(),
+                audiTT.getMechanic().getName());
     }
 
-    private static void printInfo(Driver<?> driver, Transport transport) {
-        System.out.printf("Водитель %s управляет автомобилем %s %s. \n", driver.getName(), transport.getBrand(), transport.getModel());
-        transport.checkType();
-    }
-
-    private static void service(Transport... transports) {
-        for (Transport transport : transports) {
-            serviceTransport(transport);
-        }
-    }
-
-    private static void serviceTransport(Transport transport) {
-        try {
-            if (!transport.checkDiagnosed()) {
-                System.out.printf("Автомобиль %s %s не прошел диагностику! \n", transport.getBrand(), transport.getModel());
-            }
-        } catch (RuntimeException e) {
-            System.out.println(e.getMessage());
-        }
-    }
 }
+
+
+//    public static void autoracing() {
+//    }
+//}

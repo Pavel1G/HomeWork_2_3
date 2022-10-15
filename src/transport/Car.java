@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.List;
+
 public class Car extends Transport implements Competing {
 
     public enum TypeBody {
@@ -21,6 +23,12 @@ public class Car extends Transport implements Competing {
 
     public Car(String brand, String model, double engineVolume, TypeBody typeBody) {
         super(brand, model, engineVolume);
+        this.typeBody = typeBody;
+    }
+
+    public Car(String brand, String model, double engineVolume, Driver<Car> driver, Sponsor sponsor,
+               Mechanic mechanic, TypeBody typeBody) {
+        super(brand, model, engineVolume, driver, sponsor, mechanic);
         this.typeBody = typeBody;
     }
 
