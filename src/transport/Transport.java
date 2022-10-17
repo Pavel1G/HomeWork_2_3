@@ -1,5 +1,6 @@
 package transport;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -8,16 +9,15 @@ public abstract class Transport {
     private String model;
     private double engineVolume;
 
-    private Transport[] transports;
 
     /**
-     * Урок 2.5. Коллекции
+     * Урок 2.7. Коллекции
      */
 
-    private Driver driver;
-    private Sponsor sponsor;
+    private final List<Driver<?>> drivers = new ArrayList<>();
+    private final List<Sponsor> sponsors = new ArrayList<>();
 
-    private Mechanic mechanic;
+    private final List<Mechanic<?>> mechanics = new ArrayList<>();
 
     public Transport(String brand, String model, double engineVolume) {
         setBrand(brand);
@@ -28,45 +28,28 @@ public abstract class Transport {
     /**
      * Урок 2.7. Коллекции
      */
-    public Transport(String brand, String model, double engineVolume, Driver driver, Sponsor sponsor, Mechanic mechanic) {
-        setBrand(brand);
-        setModel(model);
-        setEngineVolume(engineVolume);
-        setDriver(driver);
-        setSponsor(sponsor);
-        setMechanic(mechanic);
+    public void addDriver(Driver<?> driver) {
+        drivers.add(driver);
     }
 
-    public Transport[] getTransports() {
-        return transports;
+    public void addSponsor(Sponsor sponsor) {
+        sponsors.add(sponsor);
     }
 
-    public void setTransports(Transport[] transports) {
-        this.transports = transports;
+    public void addMechanic(Mechanic<?> mechanic) {
+        mechanics.add(mechanic);
     }
 
-    public Driver getDriver() {
-        return driver;
+    public List<?> getDrivers() {
+        return drivers;
     }
 
-    public void setDriver(Driver driver) {
-        this.driver = driver;
+    public List<?> getSponsors() {
+        return sponsors;
     }
 
-    public Sponsor getSponsor() {
-        return sponsor;
-    }
-
-    public void setSponsor(Sponsor sponsor) {
-        this.sponsor = sponsor;
-    }
-
-    public Mechanic getMechanic() {
-        return mechanic;
-    }
-
-    public void setMechanic(Mechanic mechanic) {
-        this.mechanic = mechanic;
+    public List<?> getMechanics() {
+        return mechanics;
     }
 
     /**

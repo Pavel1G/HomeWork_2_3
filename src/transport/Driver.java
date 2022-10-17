@@ -43,4 +43,9 @@ public class Driver<T extends Transport & Competing> {
     public void setExperience(int experience) {
         this.experience = experience;
     }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

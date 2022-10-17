@@ -1,11 +1,8 @@
 package transport;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-
 public class Main {
     public static void main(String[] args) {
-        Car audi = new Car("Audi", "TT", 2.0, Car.TypeBody.SEDAN);
+        Car audi = new Car("Audi", "A8", 2.0, Car.TypeBody.SEDAN);
         Car bmw = new Car("BMW", "Z4", 2.4, Car.TypeBody.HATCHBACK);
         Car renault = new Car("Renault", "Megane", 2.4, Car.TypeBody.HATCHBACK);
         Car ford = new Car("Ford", "Mustang", 3.0, Car.TypeBody.SEDAN);
@@ -89,47 +86,50 @@ public class Main {
 //            System.out.println(e.getMessage());
 //        }
 
+        autoracing();
+
         /**
          * HomeWork_2_7
          * Урок с коллекциями
          */
+        ServiceStation serviceStation = new ServiceStation("Нижегородец");
+        serviceStation.addCarToQueue(audi);
+        serviceStation.addTruckToQueue(kamaz);
+        serviceStation.addTruckToQueue(maz);
+        serviceStation.doService();
+    }
 
-        ArrayList<Transport> transports = new ArrayList<>();
-        transports.add(audi);
-        transports.add(renaultTruck);
-        transports.add(mazBus);
+    /**
+     * HomeWork_2_7
+     * Урок с коллекциями
+     */
 
-        LinkedList<Driver> drivers = new LinkedList<>();
-        drivers.add(mike);
-        drivers.add(bob);
-        drivers.add(john);
+    public static void autoracing() {
 
-        LinkedList<Sponsor> sponsors = new LinkedList<>();
+        Driver<Car> mike = new Driver<>("Mike", "B", 10);
+        Driver ron = new Driver("Ron", "B", 10);
+
         Sponsor gazprom = new Sponsor("Газпром", 1000);
-        //А можно ли как-то указать, что спонсор lukoil может обслуживать и класс Car, и Truck?
-        Sponsor lukoil = new Sponsor("Лукойл", 50);
-        Sponsor lukoilTruck = new Sponsor("Лукойл-Трак", 100);
-        sponsors.add(gazprom);
-        sponsors.add(lukoil);
-        sponsors.add(lukoilTruck);
+        Sponsor lukoil = new Sponsor("Лукойл", 500);
 
-        LinkedList<Mechanic> mechanics = new LinkedList<>();
         Mechanic johnMechanic = new Mechanic("John", "Smith", "Aurora");
         Mechanic robMechanic = new Mechanic("Rob", "Wesley", "Beta");
         Mechanic alice = new Mechanic("Alice", "Shiny", "Beta");
-        mechanics.add(johnMechanic);
-        mechanics.add(robMechanic);
-        mechanics.add(alice);
 
-        Car audiTT = new Car("Audi", "TT", 2.5, mike, gazprom, alice, Car.TypeBody.HATCHBACK);
-        System.out.printf("У машины %s %s водитель - %s. Спонсор - %s. Механик - %s. \n",
-                audiTT.getBrand(), audiTT.getModel(), audiTT.getDriver().getName(), audiTT.getSponsor().getName(),
-                audiTT.getMechanic().getName());
+        Car audiTT = new Car("Audi", "TT", 2.5, Car.TypeBody.HATCHBACK);
+
+        audiTT.addDriver(mike);
+        audiTT.addDriver(ron);
+        audiTT.addSponsor(gazprom);
+        audiTT.addSponsor(lukoil);
+        audiTT.addMechanic(johnMechanic);
+        audiTT.addMechanic(robMechanic);
+        audiTT.addMechanic(alice);
+
+        System.out.printf("У машины %s %s водители - %s. Спонсоры - %s. Механики - %s. \n",
+                audiTT.getBrand(), audiTT.getModel(), audiTT.getDrivers().toString(), audiTT.getSponsors().toString(),
+                audiTT.getMechanics().toString());
+
+
     }
-
 }
-
-
-//    public static void autoracing() {
-//    }
-//}

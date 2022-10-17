@@ -5,7 +5,7 @@ package transport;
  * Урок с коллекциями
  */
 
-public class Mechanic {
+public class Mechanic<T extends Transport> {
 
     private String name;
     private String doubleName;
@@ -18,14 +18,16 @@ public class Mechanic {
         setNameCompany(nameCompany);
     }
 
-    public void makeService() {
-        System.out.printf("Механик %s %s из компании %s обслуживает машину. \n",
-                getName(), getDoubleName(), getNameCompany());
+    public void makeService(T transport) {
+        System.out.printf("Механик %s %s из компании %s обслуживает машину %s %s. \n",
+                getName(), getDoubleName(), getNameCompany(),
+                transport.getBrand(), transport.getModel());
     }
 
-    public void repairTransport() {
-        System.out.printf("Механик %s %s из компании %s чинит машину. \n",
-                getName(), getDoubleName(), getNameCompany());
+    public void repairTransport(T transport) {
+        System.out.printf("Механик %s %s из компании %s чинит машину %s %s. \n",
+                getName(), getDoubleName(), getNameCompany(),
+                transport.getBrand(), transport.getModel());
     }
 
 
@@ -51,5 +53,10 @@ public class Mechanic {
 
     public void setNameCompany(String nameCompany) {
         this.nameCompany = nameCompany;
+    }
+
+    @Override
+    public String toString() {
+        return name + ' ' + doubleName + " из  компании " + nameCompany;
     }
 }

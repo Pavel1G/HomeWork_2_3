@@ -26,12 +26,6 @@ public class Car extends Transport implements Competing {
         this.typeBody = typeBody;
     }
 
-    public Car(String brand, String model, double engineVolume, Driver<Car> driver, Sponsor sponsor,
-               Mechanic mechanic, TypeBody typeBody) {
-        super(brand, model, engineVolume, driver, sponsor, mechanic);
-        this.typeBody = typeBody;
-    }
-
     @Override
     void beginMove() {
         System.out.println("Легковой автомобиль начал движение.");

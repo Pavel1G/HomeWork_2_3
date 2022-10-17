@@ -8,21 +8,32 @@ import java.util.Queue;
  * Урок с коллекциями
  */
 
-public class ServiceStation<T extends Car, Truck> {
+public class ServiceStation {
 
     private String companyName;
 
-    private Queue<T> queue = new LinkedList<T>();
+    public ServiceStation(String companyName) {
+        this.companyName = companyName;
+    }
 
-    public void addAutoToQueue(T auto) {
-        queue.add(auto);
+    private Queue transportsInQueue = new LinkedList();
+
+    public void addCarToQueue(Car car) {
+        transportsInQueue.add(car);
+    }
+
+    public void addTruckToQueue(Truck truck) {
+        transportsInQueue.add(truck);
     }
 
     public void doService() {
-        T auto = queue.poll();
-        if (auto != null) {
+        Transport transport = (Transport) transportsInQueue.poll();
+        if (transport != null) {
             System.out.printf("Проведено техобслуживание машины %s %s. \n",
-                    auto.getBrand(), auto.getModel());
+                    transport.getBrand(), transport.getModel());
+            doService();
+        } else {
+            System.out.println("Все машины обслужены.");
         }
     }
 }

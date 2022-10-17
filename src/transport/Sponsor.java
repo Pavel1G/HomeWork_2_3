@@ -31,4 +31,9 @@ public class Sponsor {
     public int getSupportAmount() {
         return supportAmount;
     }
+
+    @Override
+    public String toString() {
+        return name + ", сумма поддержки - " + supportAmount + " рублей";
+    }
 }
