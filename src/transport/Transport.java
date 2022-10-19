@@ -1,8 +1,6 @@
 package transport;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public abstract class Transport {
     private String brand;
@@ -12,12 +10,13 @@ public abstract class Transport {
 
     /**
      * Урок 2.7. Коллекции
+     * Урок 2.8. Замена коллекции с List на Set
      */
 
-    private final List<Driver<?>> drivers = new ArrayList<>();
-    private final List<Sponsor> sponsors = new ArrayList<>();
+    private final Set<Driver<?>> drivers = new HashSet<>();
+    private final Set<Sponsor> sponsors = new HashSet<>();
 
-    private final List<Mechanic<?>> mechanics = new ArrayList<>();
+    private final Set<Mechanic<?>> mechanics = new HashSet<>();
 
     public Transport(String brand, String model, double engineVolume) {
         setBrand(brand);
@@ -40,15 +39,15 @@ public abstract class Transport {
         mechanics.add(mechanic);
     }
 
-    public List<?> getDrivers() {
+    public Set<?> getDrivers() {
         return drivers;
     }
 
-    public List<?> getSponsors() {
+    public Set<?> getSponsors() {
         return sponsors;
     }
 
-    public List<?> getMechanics() {
+    public Set<?> getMechanics() {
         return mechanics;
     }
 

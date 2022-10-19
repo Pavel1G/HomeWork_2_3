@@ -102,6 +102,8 @@ public class Main {
     /**
      * HomeWork_2_7
      * Урок с коллекциями
+     * HomeWork_2_8
+     * Замена коллекции с List на Set
      */
 
     public static void autoracing() {
@@ -121,7 +123,9 @@ public class Main {
         audiTT.addDriver(mike);
         audiTT.addDriver(ron);
         audiTT.addSponsor(gazprom);
+        audiTT.addSponsor(gazprom);
         audiTT.addSponsor(lukoil);
+        audiTT.addMechanic(johnMechanic);
         audiTT.addMechanic(johnMechanic);
         audiTT.addMechanic(robMechanic);
         audiTT.addMechanic(alice);
