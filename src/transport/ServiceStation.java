@@ -27,17 +27,17 @@ public class ServiceStation {
     }
 
     public void doService() {
-        if (transportsInQueue.size() == 0) {
+        if (transportsInQueue.isEmpty()) {
             System.out.println("Машин нет.");
+        }
+        Transport transport = (Transport) transportsInQueue.poll();
+        if (transport != null) {
+            System.out.printf("Проведено техобслуживание машины %s %s. \n",
+                    transport.getBrand(), transport.getModel());
+            doService();
         } else {
-            Transport transport = (Transport) transportsInQueue.poll();
-            if (transport != null) {
-                System.out.printf("Проведено техобслуживание машины %s %s. \n",
-                        transport.getBrand(), transport.getModel());
-                doService();
-            } else {
-                System.out.println("Все машины обслужены.");
-            }
+            System.out.println("Все машины обслужены.");
+
         }
     }
 }
