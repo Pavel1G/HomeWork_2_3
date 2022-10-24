@@ -55,6 +55,8 @@ public class Car extends Transport implements Competing {
         System.out.printf("Машина %s %s останавливается на пит-стоп.\n", getBrand(), getModel());
     }
 
+
+
     @Override
     public void timeBestLap() {
         System.out.println("Лучшее время круга - 1 минута 22 секунды.");
