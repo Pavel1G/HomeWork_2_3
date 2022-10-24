@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.Objects;
+
 /**
  * HomeWork_2_7
  * Урок с коллекциями
@@ -18,6 +20,19 @@ public class Sponsor {
     public void getMoney() {
         System.out.printf("Спонсор %s выделяет %d рублей. \n",
                 getName(), supportAmount);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Sponsor sponsor = (Sponsor) o;
+        return supportAmount == sponsor.supportAmount && Objects.equals(name, sponsor.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, supportAmount);
     }
 
     public void setSupportAmount(int supportAmount) {

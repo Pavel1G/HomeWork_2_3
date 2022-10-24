@@ -35,9 +35,6 @@ public class ServiceStation {
             System.out.printf("Проведено техобслуживание машины %s %s. \n",
                     transport.getBrand(), transport.getModel());
             doService();
-        } else {
-            System.out.println("Все машины обслужены.");
-
         }
     }
 }

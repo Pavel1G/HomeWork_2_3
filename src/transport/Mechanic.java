@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.Objects;
+
 /**
  * HomeWork_2_7
  * Урок с коллекциями
@@ -30,6 +32,19 @@ public class Mechanic<T extends Transport> {
                 transport.getBrand(), transport.getModel());
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Mechanic<?> mechanic = (Mechanic<?>) o;
+        return Objects.equals(name, mechanic.name) && Objects.equals(doubleName, mechanic.doubleName) && Objects.equals(nameCompany, mechanic.nameCompany);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, doubleName, nameCompany);
+    }
 
     public String getName() {
         return name;

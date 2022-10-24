@@ -112,6 +112,7 @@ public class Main {
         Driver ron = new Driver("Ron", "B", 10);
 
         Sponsor gazprom = new Sponsor("Газпром", 1000);
+        Sponsor gazprom1 = new Sponsor("Газпром", 1000);
         Sponsor lukoil = new Sponsor("Лукойл", 500);
 
         Mechanic johnMechanic = new Mechanic("John", "Smith", "Aurora");
@@ -123,7 +124,7 @@ public class Main {
         audiTT.addDriver(mike);
         audiTT.addDriver(ron);
         audiTT.addSponsor(gazprom);
-        audiTT.addSponsor(gazprom);
+        audiTT.addSponsor(gazprom1);
         audiTT.addSponsor(lukoil);
         audiTT.addMechanic(johnMechanic);
         audiTT.addMechanic(johnMechanic);
